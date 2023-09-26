@@ -1,30 +1,24 @@
 import java.util.*;
 class Solution {
-    static int[] parent;
-    
+
     public int solution(int n,int[][] costs) {
         int answer = 0;
-        Arrays.sort(costs, (int[] i1, int[] i2) -> i1[2] - i2[2]);
-        parent = new int[n];
+        Arrays.sort(costs,(int[] a1, int[] a2) -> a1[2] - a2[2]);
+        Set<Integer> island = new HashSet<>();
+        island.add(costs[0][0]);
 
-        for (int i = 0; i < n; i++) {
-            parent[i] = i;
+        while (island.size() < n) {
+            for(int[] cost: costs) {
+                if (island.contains(cost[0]) && island.contains(cost[1])) continue;
+                if (island.contains(cost[0]) || island.contains(cost[1])) {
+                    island.add(cost[0]);
+                    island.add(cost[1]);
+                    answer += cost[2];
+                    break;
+                }
+            }
         }
 
-        for (int[] cost : costs) {
-            int i1 = findPrent(cost[0]);
-            int i2 = findPrent(cost[1]);
-
-            if (i1 == i2) continue;
-
-            answer += cost[2];
-            parent[i2] = i1;
-        }
         return answer;
-    }
-
-    private int findPrent(int node) {
-        if(parent[node] == node) return node;
-        return parent[node] = findPrent(parent[node]);
     }
 }
