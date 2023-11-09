@@ -12,7 +12,7 @@ class Solution {
                     now = "";
                     continue;
                 }
-                for(int j = 2; j < (int)Math.sqrt(toNum) + 1; j++) {
+                for(int j = 2; j < toNum; j++) {
                     if(toNum % j == 0) {
                         now = "";
                         continue loop;
