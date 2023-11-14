@@ -5,8 +5,6 @@ class Solution {
     public int[] solution(int[] fees, String[] records) {
         int[] answer;
         HashMap<String,Integer> hm = new HashMap<>();
-//        String[] in  = Arrays.stream(records).filter(i -> i.contains("IN")).toArray(String[]::new);
-//        String[] out  = Arrays.stream(records).filter(i -> i.contains("OUT")).toArray(String[]::new);
         loop: for (int i = 0; i < records.length; i++) {
             if (records[i].contains("IN")) {
                 String carNum = records[i].substring(6,10);
