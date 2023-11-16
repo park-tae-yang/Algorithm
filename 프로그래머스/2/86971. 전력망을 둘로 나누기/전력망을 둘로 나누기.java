@@ -3,7 +3,7 @@ import java.util.*;
 class Solution {
     public int solution(int n, int[][] wires) {
         Set<Integer> set = new HashSet();
-        int min = 100;
+        int min = n;
         int len = wires.length;
         for(int i = 0; i < len; i++) {
             for(int j = 0; j < len; j++) {
